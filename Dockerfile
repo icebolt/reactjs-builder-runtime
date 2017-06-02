@@ -6,10 +6,10 @@ WORKDIR /runtime
 RUN npm init -y
 
 #install gulp for auto build
-RUN npm install --save-dev gulp gulp-uglify;
+RUN npm install --save-dev gulp gulp-uglify gulp-connect gulp-concat gulp-browserify;
 RUN npm install --save-dev del;
 RUN npm install --save-dev vinyl-source-stream;
-RUN npm install --save-dev browserify;
+#RUN npm install --save-dev browserify;
 RUN npm install --save-dev reactify;
 RUN npm install --save-dev react react-dom;
 
@@ -21,4 +21,5 @@ RUN npm install --save-dev react react-dom;
 #add gulpfile
 ADD . /runtime
 
+RUN ["chmod", "+x", "/runtime/run.sh"]
 CMD ["bash", "run.sh"]
